@@ -12,5 +12,7 @@
     hashedPasswordFile = config.age.secrets.password-natan.path;
     openssh.authorizedKeys.keys = (import ../../sshkeys.nix).natan;
   };
+
+  home-manager.users.natan = import ../../../../home/natan/${config.networking.hostName}.nix;
 }
 

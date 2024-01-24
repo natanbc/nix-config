@@ -1,10 +1,12 @@
-{ pkgs, ... }:
+{ inputs, outputs, pkgs, ... }:
 {
   imports = [
+    inputs.home-manager.nixosModules.home-manager
     ./nix.nix
     ./ssh.nix
     ./zsh.nix
   ];
+  home-manager.extraSpecialArgs = { inherit inputs outputs; };
 
   boot.tmp.cleanOnBoot = true;
   boot.tmp.useTmpfs = true;
