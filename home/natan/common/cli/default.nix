@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }:
+{ nixosConfig, inputs, pkgs, ... }:
 let
   unstable = import inputs.nixpkgs-unstable {
     system = pkgs.system;
@@ -46,5 +46,5 @@ in
     wget
     unstable.yt-dlp
     zip
-  ] ++ hwPackages;
+  ] ++ (if !nixosConfig.boot.isContainer then hwPackages else []);
 }
