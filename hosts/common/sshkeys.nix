@@ -6,6 +6,7 @@ let
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA5w/yPd34ThyeUSCt3o5bfy2DezExYgLACoul0pOsfY natan@iphone-14"
   ];
 in {
-  root = keys;  
+  root = keys;
+  natan = keys;
 }
 

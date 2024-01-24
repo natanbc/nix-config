@@ -3,6 +3,7 @@
     ./hardware-configuration.nix
 
     ../common/global
+    ../common/users/natan
   ];
 
   networking = {

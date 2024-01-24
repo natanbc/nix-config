@@ -27,6 +27,7 @@
             then self.rev
             else "DIRTY";
         })
+        agenix.nixosModules.default
         (./hosts + "/${name}")
       ];
       specialArgs = { inherit inputs outputs; };
