@@ -22,6 +22,7 @@ in
     ./direnv.nix
     ./git.nix
     ./htop.nix
+    ./ssh.nix
     ./vim.nix
     ./zsh.nix
   ];
