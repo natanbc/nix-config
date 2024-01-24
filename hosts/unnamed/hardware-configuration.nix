@@ -22,13 +22,8 @@
     fsType = "zfs";
   };
 
-  fileSystems."/var/lib" = {
-    device = "rpool/safe/var/lib";
-    fsType = "zfs";
-  };
-
   fileSystems."/var/log" = {
-    device = "rpool/safe/var/log";
+    device = "rpool/local/log";
     fsType = "zfs";
   };
 
