@@ -21,9 +21,13 @@ in
   imports = [
     ./direnv.nix
     ./git.nix
+    ./htop.nix
   ];
 
+  programs.bat.enable = true;
+
   home.packages = with pkgs; [
+    curl
     dig
     ffmpeg
     file
@@ -31,6 +35,7 @@ in
     jq
     killall
     mediainfo
+    mtr
     ncdu_2
     neofetch
     nload
@@ -48,3 +53,4 @@ in
     zip
   ] ++ (if !nixosConfig.boot.isContainer then hwPackages else []);
 }
+
