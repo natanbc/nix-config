@@ -22,6 +22,7 @@ in
     ./direnv.nix
     ./git.nix
     ./htop.nix
+    ./zsh.nix
   ];
 
   programs.bat.enable = true;
