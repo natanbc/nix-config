@@ -1,8 +1,12 @@
-{ inputs, lib, pkgs, config, ... }:
+{ outputs, ... }:
 {
   imports = [
     ./cli
   ];
+
+  nixpkgs = {
+    overlays = builtins.attrValues outputs.overlays;
+  };
 
   programs = {
     home-manager.enable = true;
