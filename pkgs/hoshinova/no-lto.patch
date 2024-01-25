@@ -1,0 +1,10 @@
+diff --git a/Cargo.toml b/Cargo.toml
+index da01809..0858b8d 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -45,5 +45,4 @@ log = "0.4"
+ chrono = "0.4.0"
+ 
+ [profile.release]
+-lto = true
+ strip = true

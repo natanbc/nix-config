@@ -1,0 +1,43 @@
+diff --git a/util.go b/util.go
+index 3c2d0e3..2b257e9 100644
+--- a/util.go
++++ b/util.go
+@@ -315,21 +315,26 @@ func Execute(prog string, args []string) int {
+ 
+ // Download data from the given URL
+ func DownloadData(url string) []byte {
+-	var data []byte
+-	resp, err := client.Get(url)
+-	if err != nil {
+-		LogWarn("Failed to retrieve data from %s: %v", url, err)
+-		return data
+-	}
+-	defer resp.Body.Close()
++	for i := 0; i < 5; i++ {
++		var data []byte
++		resp, err := client.Get(url)
++		if err != nil {
++			LogWarn("Failed to retrieve data from %s: %v", url, err)
++			time.Sleep(5 * time.Second)
++			continue
++		}
++		defer resp.Body.Close()
++
++		data, err = io.ReadAll(resp.Body)
++		if err != nil {
++			LogWarn("Failed to retrieve data from %s: %v", url, err)
++			time.Sleep(5 * time.Second)
++			continue
++		}
+ 
+-	data, err = io.ReadAll(resp.Body)
+-	if err != nil {
+-		LogWarn("Failed to retrieve data from %s: %v", url, err)
+ 		return data
+ 	}
+-
+-	return data
++	return nil
+ }
+ 
+ /*
