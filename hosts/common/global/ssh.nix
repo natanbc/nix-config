@@ -8,4 +8,6 @@
       PermitRootLogin = "prohibit-password";
     };    
   };
+
+  security.pam.enableSSHAgentAuth = true;
 }
