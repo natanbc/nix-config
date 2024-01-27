@@ -51,6 +51,7 @@
     };
 
     nixosConfigurations = {
+      live-iso = box "live-iso";
       unnamed = box "unnamed";
     };
   };

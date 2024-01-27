@@ -7,7 +7,7 @@
     };
 
     gc = {
-      automatic = true;
+      automatic = lib.mkDefault true;
       dates = "weekly";
       options = "--delete-older-than +3";
     };

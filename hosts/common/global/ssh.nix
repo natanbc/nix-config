@@ -1,3 +1,4 @@
+{ lib, ... }:
 {
   users.users.root.openssh.authorizedKeys.keys = (import ../sshkeys.nix).root;
 
@@ -5,7 +6,7 @@
     enable = true;
     settings = {
       PasswordAuthentication = false;
-      PermitRootLogin = "prohibit-password";
+      PermitRootLogin = lib.mkForce "prohibit-password";
     };    
   };
 
