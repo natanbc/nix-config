@@ -28,6 +28,7 @@
       olderThanDays = 90;
     };
 
+    configureNginx = true;
     smtp.fromAddress = "noreply@mastodon.natanbc.net";
     streamingProcesses = 3;
 
@@ -35,6 +36,11 @@
     secretKeyBaseFile = config.age.secrets.mastodon-secret-key-base.path;
     vapidPrivateKeyFile = config.age.secrets.mastodon-vapid-priv.path;
     vapidPublicKeyFile = config.age.secrets.mastodon-vapid-pub.path;
+  };
+
+  services.nginx.virtualHosts."natanbc.net" = {
+    forceSSL = false;
+    enableACME = false;
   };
 }
 

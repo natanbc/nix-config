@@ -13,7 +13,7 @@
         credentialsFile = config.age.secrets.cloudflared-credentials.path;
         ingress = {
           "mastodon.natanbc.net" = {
-            service = "http://localhost:55001";
+            service = "http://localhost:80";
           };
         };
         default = "http_status:404";
