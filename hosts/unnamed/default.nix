@@ -4,6 +4,8 @@
 
     ../common/global
     ../common/users/natan
+
+    ./services
   ];
 
   networking = {
