@@ -41,6 +41,9 @@
   services.nginx.virtualHosts."natanbc.net" = {
     forceSSL = false;
     enableACME = false;
+    locations."@proxy" = {
+      extraConfig = "proxy_set_header X-Forwarded-Proto https;";
+    };
   };
 }
 
