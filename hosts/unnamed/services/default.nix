@@ -1,7 +1,7 @@
 {
   imports = [
     ./cloudflared
-    ./mastodon
+#    ./mastodon
     ./nginx.nix
   ];
 }
