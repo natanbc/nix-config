@@ -18,7 +18,7 @@
     enable = true;
     localDomain = "natanbc.net";
     extraConfig = {
-      AUTHORIZED_FETCH = "true";
+#      AUTHORIZED_FETCH = "true";
       SINGLE_USER_MODE = "true";
       WEB_DOMAIN = "mastodon.natanbc.net";
     };
