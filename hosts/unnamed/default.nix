@@ -11,6 +11,7 @@
   networking = {
     hostName = "unnamed";
     useDHCP = true;
+    wireless.iwd.enable = true;
   };
   system.stateVersion = "23.11";
 }
