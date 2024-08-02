@@ -13,7 +13,7 @@
     iperf
     killall
     lm_sensors
-    mstflint-425
+    mstflint-connectx3
     mtr
     neofetch
     nload
