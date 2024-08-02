@@ -8,8 +8,9 @@
   services.xserver = {
     enable = true;
     autorun = false;
-    displayManager.sddm.enable = true;
     desktopManager.plasma5.enable = true;
   };
+
+  services.displayManager.sddm.enable = true;
 }
 
