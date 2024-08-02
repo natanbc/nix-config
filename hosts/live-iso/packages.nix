@@ -2,6 +2,7 @@
 {
   environment.systemPackages = with pkgs; [
     dmidecode
+    dnsmasq
     efibootmgr
     efivar
     ethtool
@@ -10,7 +11,9 @@
     hdparm
     htop
     iperf
+    killall
     lm_sensors
+    mstflint-425
     mtr
     neofetch
     nload
