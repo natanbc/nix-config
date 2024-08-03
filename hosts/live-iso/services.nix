@@ -4,5 +4,7 @@
     lidSwitchDocked = "ignore";
     lidSwitchExternalPower = "ignore";
   };
+
+  networking.firewall.enable = false;
 }
 

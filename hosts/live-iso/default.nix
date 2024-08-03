@@ -8,6 +8,7 @@
     ./hardware-configuration.nix
     ./packages.nix
     ./services.nix
+    ./sysctl.nix
   ];
 
   networking = {
