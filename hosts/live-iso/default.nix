@@ -21,5 +21,17 @@
     settings.auto-optimise-store = false;
     gc.automatic = false;
   };
+
+  systemd.tmpfiles.settings = {
+    "10-var-lib-misc" = {
+      "/var/lib/misc" = {
+        d = {
+          group = "root";
+          user = "root";
+          mode = "0755";
+        };
+      };
+    };
+  };
 }
 
