@@ -3,6 +3,7 @@
   imports = [
     inputs.home-manager.nixosModules.home-manager
     ./nix.nix
+    ./nix-gc.nix
     ./ssh.nix
     ./zsh.nix
   ];
