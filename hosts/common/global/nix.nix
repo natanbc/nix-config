@@ -13,7 +13,6 @@
       #options = "--delete-older-than +3";
 
       nixEnvOptions = "--delete-generations +3";
-      options = "-d";
     };
   };
 }
