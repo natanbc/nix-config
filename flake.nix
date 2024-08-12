@@ -53,6 +53,7 @@
     nixosConfigurations = {
       live-iso = box "live-iso";
       live-iso-graphical = box "live-iso-graphical";
+      nas = box "nas";
       unnamed = box "unnamed";
     };
   };
