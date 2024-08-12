@@ -3,6 +3,7 @@
   boot.kernelParams = [ "ip=dhcp" ];
   boot.initrd = {
     availableKernelModules = [ "mlx4_en" "r8169" ];
+    systemd.users.root.shell = "/bin/systemd-tty-ask-password-agent";
     network = {
       enable = true;
       ssh = {
