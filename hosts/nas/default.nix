@@ -4,6 +4,8 @@
 
     ../common/global
     ../common/users/natan
+
+    ./remote-disk-unlock.nix
   ];
 
   networking = {
