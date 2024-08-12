@@ -5,6 +5,7 @@
     ../common/global
     ../common/users/natan
 
+    ./lanzaboote.nix
     ./remote-disk-unlock.nix
   ];
 

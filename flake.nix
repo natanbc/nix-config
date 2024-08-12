@@ -5,6 +5,12 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
     nixpkgs-unstable.url = github:NixOS/nixpkgs/nixos-unstable;
 
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.pre-commit-hooks-nix.follows = "";
+    };
+
     home-manager = {
       url = github:nix-community/home-manager/release-24.05;
       inputs.nixpkgs.follows = "nixpkgs";
@@ -16,7 +22,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, agenix, ... } @ inputs:
+  outputs = { self, nixpkgs, lanzaboote, home-manager, agenix, ... } @ inputs:
   let
     inherit (self) outputs;
     lib = nixpkgs.lib;
@@ -39,6 +45,7 @@
           nixpkgs.overlays = builtins.attrValues outputs.overlays;
         })
         agenix.nixosModules.default
+        lanzaboote.nixosModules.lanzaboote
         (./hosts + "/${name}")
       ];
       specialArgs = { inherit inputs outputs; };
