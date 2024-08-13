@@ -7,6 +7,7 @@
 
     ./lanzaboote.nix
     ./remote-disk-unlock.nix
+    ./wol.nix
 
     ./services
   ];
