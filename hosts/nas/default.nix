@@ -7,6 +7,8 @@
 
     ./lanzaboote.nix
     ./remote-disk-unlock.nix
+
+    ./services
   ];
 
   networking = {
