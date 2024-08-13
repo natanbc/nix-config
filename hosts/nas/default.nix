@@ -18,9 +18,4 @@
     useDHCP = true;
   };
   system.stateVersion = "24.05";
-
-  # HACK: the package fails to build when used from home-manager, but works system-wide
-  environment.systemPackages = with pkgs; [
-    mstflint-connectx3
-  ];
 }
