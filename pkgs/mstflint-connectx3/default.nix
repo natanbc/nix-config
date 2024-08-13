@@ -21,4 +21,6 @@
     "--enable-inband"
     "--enable-rdmem"
   ];
+
+  enableParallelBuilding = false;
 }
