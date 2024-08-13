@@ -1,4 +1,4 @@
-{ config, inputs, outputs, pkgs, ... }:
+{ config, inputs, outputs, pkgs, lib, ... }:
 {
   imports = [
     inputs.home-manager.nixosModules.home-manager
@@ -21,5 +21,7 @@
 
   hardware.enableRedistributableFirmware = true;
   hardware.wirelessRegulatoryDatabase = true;
+
+  services.fwupd.enable = lib.mkDefault (!config.boot.isContainer);
 }
 

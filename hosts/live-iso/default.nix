@@ -22,6 +22,8 @@
     gc.automatic = false;
   };
 
+  services.fwupd.enable = false;
+
   systemd.tmpfiles.settings = {
     "10-var-lib-misc" = {
       "/var/lib/misc" = {
