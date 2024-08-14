@@ -1,3 +1,3 @@
 {
-  networking.interfaces.enp4s0.wakeOnLan.enable = true;
+  networking.interfaces.enp5s0.wakeOnLan.enable = true;
 }
