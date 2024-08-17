@@ -13,6 +13,11 @@
     ./services
   ];
 
+  boot.kernelParams = [
+    # 96GiB
+    "zfs.zfs_arc_max=103079215104"
+  ];
+
   networking = {
     hostName = "nas";
     useDHCP = true;
