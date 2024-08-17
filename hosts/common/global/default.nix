@@ -23,5 +23,7 @@
   hardware.wirelessRegulatoryDatabase = true;
 
   services.fwupd.enable = lib.mkDefault (!config.boot.isContainer);
+
+  users.mutableUsers = lib.mkDefault false;
 }
 
