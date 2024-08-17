@@ -10,6 +10,7 @@
     ./remote-disk-unlock.nix
     ./wol.nix
 
+    ./fs
     ./services
   ];
 
