@@ -18,6 +18,7 @@
     # 96GiB
     "zfs.zfs_arc_max=103079215104"
   ];
+  boot.tmp.tmpfsSize = "112G";
 
   networking = {
     hostName = "nas";
