@@ -14,6 +14,8 @@ in
   boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usb_storage" "usbhid" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
+  # Does not automatically load because of a resource conflict, but this ensures the module is available.
+  # To load manually, use `modprobe it87-frankcrawford ignore_resource_conflict`
   boot.extraModulePackages = [ it87-frankcrawford ];
 
   boot.loader.systemd-boot.enable = true;
