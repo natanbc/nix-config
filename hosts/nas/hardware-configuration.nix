@@ -3,9 +3,6 @@
 # to /etc/nixos/configuration.nix instead.
 { config, lib, pkgs, modulesPath, ... }:
 
-let
-  it87-frankcrawford = config.boot.kernelPackages.callPackage ../../pkgs/it87-frankcrawford {};
-in
 {
   imports =
     [ (modulesPath + "/installer/scan/not-detected.nix")
@@ -15,8 +12,8 @@ in
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   # Does not automatically load because of a resource conflict, but this ensures the module is available.
-  # To load manually, use `modprobe it87-frankcrawford ignore_resource_conflict`
-  boot.extraModulePackages = [ it87-frankcrawford ];
+  # To load manually, use `modprobe it87 ignore_resource_conflict`
+  boot.extraModulePackages = [ config.boot.kernelPackages.it87 ];
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
