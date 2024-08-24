@@ -1,5 +1,5 @@
 diff --git a/Makefile b/Makefile
-index c5988ca..1b6929a 100644
+index c5988ca..e5aaa9d 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -5,8 +5,9 @@ endif
@@ -13,7 +13,7 @@ index c5988ca..1b6929a 100644
  ifneq ("","$(wildcard /usr/src/linux-headers-$(TARGET)/*)")
  # Ubuntu
  KERNEL_BUILD = /usr/src/linux-headers-$(TARGET)
-@@ -18,16 +19,20 @@ else
+@@ -18,16 +19,23 @@ else
  KERNEL_BUILD = $(KERNEL_MODULES)/build
  endif
  endif
@@ -30,11 +30,14 @@ index c5988ca..1b6929a 100644
 +endif
 
  DRIVER := it87
++ifndef DRIVER_KO
++DRIVER_KO=$(DRIVER)
++endif
 +ifndef DRIVER_VERSION
  ifneq ("","$(wildcard .git/*)")
  DRIVER_VERSION := $(shell git describe --long).$(shell date -u -d "$$(git show -s --format=%ci HEAD)" +%Y%m%d)
  else
-@@ -37,6 +42,7 @@ else
+@@ -37,6 +45,7 @@ else
  DRIVER_VERSION := unknown
  endif
  endif
@@ -42,19 +45,39 @@ index c5988ca..1b6929a 100644
 
  # DKMS
  DKMS_ROOT_PATH=/usr/src/$(DRIVER)-$(DRIVER_VERSION)
-@@ -45,7 +51,9 @@ MODPROBE_OUTPUT=$(shell lsmod | grep it87)
+@@ -45,10 +54,16 @@ MODPROBE_OUTPUT=$(shell lsmod | grep it87)
  # Directory below /lib/modules/$(TARGET)/kernel into which to install
  # the module:
  MOD_SUBDIR = drivers/hwmon
-+ifndef MODDESTDIR
- MODDESTDIR=$(KERNEL_MODULES)/kernel/$(MOD_SUBDIR)
+-MODDESTDIR=$(KERNEL_MODULES)/kernel/$(MOD_SUBDIR)
++ifndef MODBASEDIR
++MODBASEDIR=$(KERNEL_MODULES)/kernel
++endif
++MODDESTDIR=$(MODBASEDIR)/$(MOD_SUBDIR)
+
+-obj-m = $(patsubst %,%.o,$(DRIVER))
+-obj-ko  := $(patsubst %,%.ko,$(DRIVER))
++obj-m   := $(DRIVER_KO).o
++obj-ko  := $(DRIVER_KO).o
++ifneq ($(DRIVER_KO),$(DRIVER))
++$(DRIVER_KO)-objs := $(DRIVER).o
 +endif
 
- obj-m = $(patsubst %,%.o,$(DRIVER))
- obj-ko  := $(patsubst %,%.ko,$(DRIVER))
-@@ -86,7 +94,7 @@ endif
+ MAKEFLAGS += --no-print-directory
+
+@@ -79,14 +94,14 @@ install: modules_install
+
+ modules_install:
+	mkdir -p $(MODDESTDIR)
+-	cp $(DRIVER).ko $(MODDESTDIR)/
++	cp $(DRIVER_KO).ko $(MODDESTDIR)/
+ ifeq ($(COMPRESS_GZIP), y)
+-	@gzip -f $(MODDESTDIR)/$(DRIVER).ko
++	@gzip -f $(MODDESTDIR)/$(DRIVER_KO).ko
+ endif
  ifeq ($(COMPRESS_XZ), y)
-	@xz -f $(MODDESTDIR)/$(DRIVER).ko
+-	@xz -f $(MODDESTDIR)/$(DRIVER).ko
++	@xz -f $(MODDESTDIR)/$(DRIVER_KO).ko
  endif
 -	depmod -a -F $(SYSTEM_MAP) $(TARGET)
 +	depmod -b $(MOD_ROOT) -a -F $(SYSTEM_MAP) $(TARGET)

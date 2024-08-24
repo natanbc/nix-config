@@ -4,7 +4,7 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 let
-  it87 = config.boot.kernelPackages.callPackage ../../pkgs/it87 {};
+  it87-frankcrawford = config.boot.kernelPackages.callPackage ../../pkgs/it87-frankcrawford {};
 in
 {
   imports =
@@ -14,7 +14,7 @@ in
   boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usb_storage" "usbhid" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
-  boot.extraModulePackages = [ it87 ];
+  boot.extraModulePackages = [ it87-frankcrawford ];
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;

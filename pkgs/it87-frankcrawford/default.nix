@@ -1,7 +1,7 @@
 { stdenv, lib, fetchFromGitHub, kernel, kmod }:
 
 stdenv.mkDerivation rec {
-  name = "it87-${version}-${kernel.version}";
+  name = "it87-frankcrawford-${version}-${kernel.version}";
   version = "14b1de2";
 
   src = fetchFromGitHub {
@@ -19,12 +19,13 @@ stdenv.mkDerivation rec {
   nativeBuildInputs = kernel.moduleBuildDependencies ++ [ kmod ];
 
   makeFlags = [
+    "DRIVER_KO=it87-frankcrawford"
     "TARGET=${kernel.modDirVersion}"
     "KERNEL_BUILD=${kernel.dev}/lib/modules/${kernel.modDirVersion}/build"
     "SYSTEM_MAP=${kernel}/System.map"
     "MOD_ROOT=${kernel}"
     "DRIVER_VERSION=${version}"
-    "MODDESTDIR=$(out)"
+    "MODBASEDIR=$(out)/lib/modules/${kernel.modDirVersion}/kernel"
   ];
 
   meta = with lib; {
