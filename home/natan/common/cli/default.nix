@@ -12,6 +12,7 @@ let
     hdparm
     lm_sensors
     pciutils
+    sg3_utils
     smartmontools
     sysstat
     usbutils
