@@ -44,6 +44,8 @@
             then self.rev
             else "DIRTY";
 
+          environment.etc."current-config".source = ./.;
+
           nixpkgs.overlays = builtins.attrValues outputs.overlays;
         })
         agenix.nixosModules.default
