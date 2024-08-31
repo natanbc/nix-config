@@ -32,12 +32,12 @@
       fsType = "zfs";
     };
 
-  fileSystems."/home/nix" =
+  fileSystems."/nix" =
     { device = "rpool/local/nix";
       fsType = "zfs";
     };
 
-  fileSystems."/home/var/log" =
+  fileSystems."/var/log" =
     { device = "rpool/local/log";
       fsType = "zfs";
     };
