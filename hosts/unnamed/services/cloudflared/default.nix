@@ -15,6 +15,9 @@
           "k3s.natanbc.net" = {
             service = "https://localhost:6443";
           };
+          "argocd-webhook.natanbc.net" = {
+            service = "https://localhost:31243";
+          };
         };
         originRequest.noTLSVerify = true;
         default = "http_status:404";
