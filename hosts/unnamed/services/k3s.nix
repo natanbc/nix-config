@@ -11,5 +11,5 @@
 
   environment.systemPackages = [ pkgs.k3s ];
 
-  systemd.services.k3s.path = [ pkgs.ipset ];
+  systemd.services.k3s.path = with pkgs; [ ipset openiscsi ];
 }
