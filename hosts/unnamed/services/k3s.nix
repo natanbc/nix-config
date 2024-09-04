@@ -9,7 +9,7 @@
     role = "server";
   };
 
-  environment.systemPackages = [ pkgs.k3s ];
+  environment.systemPackages = with pkgs; [ k3s openiscsi ];
 
-  systemd.services.k3s.path = with pkgs; [ ipset openiscsi ];
+  systemd.services.k3s.path = with pkgs; [ ipset ];
 }
