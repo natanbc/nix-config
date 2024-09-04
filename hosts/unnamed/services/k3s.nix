@@ -1,5 +1,13 @@
 { pkgs, ... }:
 {
+  boot.kernel.sysctl = {
+    "fs.inotify.max_user_watches" = 65535;
+    "fs.inotify.max_user_instances" = 65535;
+    "fs.inotify.max_queued_events" = 65535;
+  };
+
+  environment.systemPackages = with pkgs; [ k3s openiscsi ];
+
   networking.firewall.allowedTCPPorts = [
     6443
   ];
@@ -8,8 +16,6 @@
     enable = true;
     role = "server";
   };
-
-  environment.systemPackages = with pkgs; [ k3s openiscsi ];
 
   systemd.services.k3s.path = with pkgs; [ ipset ];
 }
