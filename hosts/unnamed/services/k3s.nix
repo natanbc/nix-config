@@ -12,10 +12,20 @@
     6443
   ];
 
-  services.k3s = {
-    enable = true;
-    role = "server";
+  services = {
+    k3s = {
+      enable = true;
+      role = "server";
+    };
+    openiscsi = {
+      enable = true;
+      name = "iqn.2024-09.net.natanbc:unnamed";
+    };
   };
 
   systemd.services.k3s.path = with pkgs; [ ipset ];
+
+  systemd.tmpfiles.rules = [
+    "L+ /usr/local/bin - - - - /run/current-system/sw/bin/"
+  ];
 }
