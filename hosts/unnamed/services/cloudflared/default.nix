@@ -18,6 +18,9 @@
           "argocd-webhook.natanbc.net" = {
             service = "https://localhost:31243";
           };
+          "did-ze-use-the-nixos-vm-yet.natanbc.net" = {
+            service = "http://localhost:80";
+          };
         };
         originRequest.noTLSVerify = true;
         default = "http_status:404";
