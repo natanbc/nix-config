@@ -3,6 +3,7 @@
     ./hardware-configuration.nix
 
     ../common/global
+    ../common/optional/tailscale.nix
     ../common/users/natan
 
     ./services
