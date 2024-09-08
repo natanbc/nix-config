@@ -4,6 +4,7 @@
     ./hardware-configuration.nix
 
     ../common/global
+    ../common/optional/tailscale.nix
     ../common/users/natan
 
     ./lanzaboote.nix
@@ -11,7 +12,6 @@
     ./wol.nix
 
     ./fs
-    ./services
   ];
 
   boot.kernelParams = [
