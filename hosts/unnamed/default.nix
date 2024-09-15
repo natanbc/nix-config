@@ -4,6 +4,7 @@
 
     ../common/global
     ../common/optional/tailscale.nix
+    ../common/optional/zfs.nix
     ../common/users/natan
 
     ./services
