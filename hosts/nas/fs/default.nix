@@ -9,5 +9,9 @@ in {
     value = {
       file = ./. + "/luks-key-${uuid}.age";
     };
-  }) partUUIDs);
+  }) partUUIDs) // {
+    zfs-key-tank = {
+      file = ./zfs-key-tank.age;
+    };
+  };
 }
