@@ -2,7 +2,7 @@
   imports = [
     ./cloudflared
     ./docker-registry
-    ./k3s.nix
+    ./k3s
     ./nginx.nix
   ];
 }
