@@ -1,9 +1,8 @@
 {
   imports = [
     ./cloudflared
-    ./docker-registry.nix
+    ./docker-registry
     ./k3s.nix
-#    ./mastodon
     ./nginx.nix
   ];
 }
