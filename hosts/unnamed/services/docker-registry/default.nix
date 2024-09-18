@@ -3,6 +3,10 @@ let
   user = config.systemd.services.docker-registry.serviceConfig.User;
 in
 {
+  imports = [
+    ./nginx.nix
+  ];
+
   age.secrets.docker-registry-htpasswd = {
     file = ./htpasswd.age;
     group = user;
@@ -22,17 +26,5 @@ in
       };
     };
     listenAddress = "127.0.0.1";
-  };
-
-  services.nginx.virtualHosts = {
-    "docker-registry.natanbc.net" = {
-      addSSL = true;
-      enableACME = true;
-      locations."/".proxyPass =
-        let
-          ip = config.services.dockerRegistry.listenAddress;
-          port = toString config.services.dockerRegistry.port;
-        in "http://${ip}:${port}";
-    };
   };
 }
