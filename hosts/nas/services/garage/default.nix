@@ -1,5 +1,9 @@
 { config, pkgs, ... }:
 {
+  imports = [
+    ./nginx.nix
+  ];
+
   age.secrets = builtins.listToAttrs (builtins.map (name: {
     name = "garage-${name}";
     value = {
