@@ -3,6 +3,7 @@
     ./hardware-configuration.nix
 
     ../common/global
+    ../common/optional/nginx.nix
     ../common/optional/tailscale.nix
     ../common/optional/zfs.nix
     ../common/users/natan

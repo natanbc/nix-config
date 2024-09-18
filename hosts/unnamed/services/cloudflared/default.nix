@@ -1,9 +1,9 @@
 { config, ... }:
 {
   age.secrets.cloudflared-credentials = {
-    file = ./cloudflared-credentials.age;
-    group = "cloudflared";
-    owner = "cloudflared";
+    file = ./credentials.age;
+    group = config.services.cloudflared.group;
+    owner = config.services.cloudflared.user;
   };
 
   services.cloudflared = {
@@ -19,7 +19,7 @@
             service = "https://localhost:31243";
           };
           "docker-registry.natanbc.net" = {
-            service = "http://localhost:5000";
+            service = "http://localhost:80";
           };
         };
         originRequest.noTLSVerify = true;
