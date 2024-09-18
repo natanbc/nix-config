@@ -1,5 +1,10 @@
 { config, pkgs, ... }:
 {
+  imports = [
+    ./longhorn.nix
+    ./nginx
+  ];
+
   age.secrets.k3s-registry-config = {
     file = ./registry-config.age;
   };
@@ -10,7 +15,7 @@
     "fs.inotify.max_queued_events" = 65535;
   };
 
-  environment.systemPackages = with pkgs; [ k3s openiscsi ];
+  environment.systemPackages = with pkgs; [ k3s ];
 
   networking.firewall.allowedTCPPorts = [
     6443
@@ -22,15 +27,7 @@
       extraFlags = "--private-registry ${config.age.secrets.k3s-registry-config.path}";
       role = "server";
     };
-    openiscsi = {
-      enable = true;
-      name = "iqn.2024-09.net.natanbc:unnamed";
-    };
   };
 
   systemd.services.k3s.path = with pkgs; [ ipset ];
-
-  systemd.tmpfiles.rules = [
-    "L+ /usr/local/bin - - - - /run/current-system/sw/bin/"
-  ];
 }

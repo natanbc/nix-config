@@ -13,16 +13,15 @@
         credentialsFile = config.age.secrets.cloudflared-credentials.path;
         ingress = {
           "k3s.natanbc.net" = {
-            service = "https://localhost:6443";
+            service = "http://localhost:80";
           };
           "argocd-webhook.natanbc.net" = {
-            service = "https://localhost:31243";
+            service = "http://localhost:80";
           };
           "docker-registry.natanbc.net" = {
             service = "http://localhost:80";
           };
         };
-        originRequest.noTLSVerify = true;
         default = "http_status:404";
       };
     };
