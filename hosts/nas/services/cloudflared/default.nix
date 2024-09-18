@@ -15,6 +15,9 @@
           "s3.natanbc.net" = {
             service = "http://localhost:80";
           };
+          "s3web.natanbc.net" = {
+            service = "http://localhost:80";
+          };
         };
         default = "http_status:404";
       };

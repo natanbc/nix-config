@@ -39,7 +39,12 @@
       s3_api = {
         api_bind_addr = "/run/garage/s3-api.socket";
         s3_region = "garage";
-        root_domain = "s3.natanbc.net";
+        root_domain = ".s3.natanbc.net";
+      };
+
+      s3_web = {
+        bind_addr = "/run/garage/s3-web.socket";
+        root_domain = ".s3web.natanbc.net";
       };
 
       admin = {
