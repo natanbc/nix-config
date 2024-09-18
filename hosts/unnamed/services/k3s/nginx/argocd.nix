@@ -1,9 +1,11 @@
 {
   services.nginx.virtualHosts = {
-    "argocd-webhook.natanbc.net" = {
+    "argocd.natanbc.net" = {
       addSSL = true;
       enableACME = true;
-      locations."/api/webhook" = {
+      acmeRoot = null;
+
+      locations."/" = {
         proxyPass = "https://127.0.0.1:31243";
         extraConfig = ''
           proxy_ssl_verify off;
