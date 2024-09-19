@@ -1,5 +1,6 @@
 { config, ... }:
 {
+  services.nginx.clientMaxBodySize = "100M";
   services.nginx.virtualHosts = {
     "docker-registry.natanbc.net" = {
       addSSL = true;
