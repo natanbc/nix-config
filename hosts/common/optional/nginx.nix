@@ -18,12 +18,6 @@
       set_real_ip_from 127.0.0.0/8;
       set_real_ip_from ::1/128;
       real_ip_header CF-Connecting-IP;
-
-      # For websockets
-      map $http_upgrade $connection_upgrade {
-        default upgrade;
-        \'\'      close;
-      }
     '';
   };
 }
