@@ -24,6 +24,9 @@ in
           path = config.age.secrets.docker-registry-htpasswd.path;
         };
       };
+      catalog = {
+        maxentries = 10000; # For compat with registry-cli
+      };
     };
     listenAddress = "127.0.0.1";
   };
