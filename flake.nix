@@ -5,10 +5,11 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
     nixpkgs-unstable.url = github:NixOS/nixpkgs/nixos-unstable;
 
-    lanzaboote = {
-      url = "github:nix-community/lanzaboote";
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.darwin.follows = "";
+      inputs.home-manager.follows = "home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.pre-commit-hooks-nix.follows = "";
     };
 
     home-manager = {
@@ -16,15 +17,20 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    agenix = {
-      url = "github:ryantm/agenix";
-      inputs.darwin.follows = "";
-      inputs.home-manager.follows = "home-manager";
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.pre-commit-hooks-nix.follows = "";
+    };
+
+    scalpel = {
+      url = "github:polygon/scalpel";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.sops-nix.follows = "";
     };
   };
 
-  outputs = { self, nixpkgs, lanzaboote, home-manager, agenix, ... } @ inputs:
+  outputs = { self, nixpkgs, agenix, home-manager, lanzaboote, scalpel, ... } @ inputs:
   let
     inherit (self) outputs;
     lib = nixpkgs.lib;
@@ -50,6 +56,7 @@
         })
         agenix.nixosModules.default
         lanzaboote.nixosModules.lanzaboote
+        scalpel.nixosModules.scalpel
         (./hosts + "/${name}")
       ];
       specialArgs = { inherit inputs outputs; };

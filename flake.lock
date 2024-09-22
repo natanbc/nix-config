@@ -167,7 +167,8 @@
         "home-manager": "home-manager",
         "lanzaboote": "lanzaboote",
         "nixpkgs": "nixpkgs",
-        "nixpkgs-unstable": "nixpkgs-unstable"
+        "nixpkgs-unstable": "nixpkgs-unstable",
+        "scalpel": "scalpel"
       }
     },
     "rust-overlay": {
@@ -188,6 +189,27 @@
       "original": {
         "owner": "oxalica",
         "repo": "rust-overlay",
+        "type": "github"
+      }
+    },
+    "scalpel": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "sops-nix": []
+      },
+      "locked": {
+        "lastModified": 1655566736,
+        "narHash": "sha256-Vyolf8j7QcAHyVTQMqS8EGYZ/P6leJtiVNhYyIxoMRw=",
+        "owner": "polygon",
+        "repo": "scalpel",
+        "rev": "16c2103d613bb1c7adc6dbf2a17c2980ce08567f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "polygon",
+        "repo": "scalpel",
         "type": "github"
       }
     },
