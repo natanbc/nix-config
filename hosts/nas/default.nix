@@ -9,7 +9,6 @@
     ../common/optional/zfs.nix
     ../common/users/natan
 
-    ./fs
     ./lanzaboote.nix
     ./remote-disk-unlock.nix
     ./services

@@ -8,6 +8,11 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
+  age.secrets = {
+    luks-key-scratch.file = ./luks-key-scratch.age;
+    zfs-key-tank.file = ./zfs-key-tank.age;
+  };
+
   boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usb_storage" "usbhid" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
@@ -21,6 +26,10 @@
   boot.initrd.luks.devices = {
     "luks-rpool-6a28a049-626a-4122-a68e-a6c9a94cb569".device = "/dev/disk/by-uuid/6a28a049-626a-4122-a68e-a6c9a94cb569";
   };
+
+  environment.etc.crypttab.text = ''
+    scratch UUID=e73bb99d-e337-48d1-a2b9-ad1eee0dc491 ${config.age.secrets.luks-key-scratch.path}
+  '';
 
   fileSystems."/" =
     { device = "rpool/safe/root";
@@ -56,6 +65,12 @@
   fileSystems."/mnt/garage" =
     { device = "tank/garage";
       fsType = "zfs";
+    };
+
+  fileSystems."/mnt/scratch" =
+    { device = "/dev/mapper/scratch";
+      fsType = "xfs";
+      options = [ "defaults" "noatime" ];
     };
 
   swapDevices = [ ];
