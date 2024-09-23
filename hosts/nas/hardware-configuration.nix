@@ -68,9 +68,8 @@
     };
 
   fileSystems."/mnt/scratch" =
-    { device = "/dev/mapper/scratch";
-      fsType = "xfs";
-      options = [ "defaults" "noatime" ];
+    { device = "scratch/scratch";
+      fsType = "zfs";
     };
 
   swapDevices = [ ];
