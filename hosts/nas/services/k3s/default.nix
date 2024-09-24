@@ -30,7 +30,10 @@ in
   };
 
   config = {
-    age.secrets.k3s-token.file = ./token.age;
+    age.secrets = {
+      k3s-agent-token.file = ./agent-token.age;
+      k3s-token.file = ./token.age;
+    };
 
     boot.kernel.sysctl = {
       "fs.inotify.max_user_watches" = 65535;
@@ -47,7 +50,13 @@ in
         enable = true;
 
         configPath = configFile;
-        flags = [ "--disable" "servicelb" "--disable" "local-storage" "--disable" "traefik" "--flannel-iface" "tailscale0" ];
+        flags = [
+          "--agent-token-file" "${config.age.secrets.k3s-agent-token.path}"
+          "--disable" "local-storage"
+          "--disable" "servicelb"
+          "--disable" "traefik"
+          "--flannel-iface" "tailscale0"
+        ];
         extraFlags = lib.concatStringsSep " " (builtins.map lib.escapeShellArg config.services.k3s.flags);
         role = "server";
         tokenFile = config.age.secrets.k3s-token.path;
