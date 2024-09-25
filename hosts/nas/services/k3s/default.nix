@@ -8,6 +8,7 @@ in
   imports = [
     ./flannel.nix
     ./kubelet.nix
+    ./longhorn.nix
     ./private-registry
   ];
 
