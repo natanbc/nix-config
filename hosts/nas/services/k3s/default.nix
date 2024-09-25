@@ -63,6 +63,11 @@ in
       };
     };
 
-    systemd.services.k3s.path = with pkgs; [ ipset ];
+    systemd.services.k3s = {
+      after = [
+        config.systemd.services.tailscaled.name
+      ];
+      path = with pkgs; [ ipset ];
+    };
   };
 }
