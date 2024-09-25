@@ -51,6 +51,16 @@
       fsType = "zfs";
     };
 
+  fileSystems."/var/lib/kubelet" =
+    { device = "rpool/local/kubelet";
+      fsType = "zfs";
+    };
+
+  fileSystems."/var/lib/rancher/k3s/agent/containerd" =
+    { device = "rpool/local/k3s-containerd";
+      fsType = "zfs";
+    };
+
   fileSystems."/boot" =
     { device = "/dev/disk/by-uuid/D7F2-5F0E";
       fsType = "vfat";
