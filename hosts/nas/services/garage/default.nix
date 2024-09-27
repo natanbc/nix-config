@@ -24,7 +24,7 @@
     package = pkgs.garage;
 
     settings = rec {
-      data_dir = "/mnt/garage";
+      data_dir = config.fileSystems."/mnt/garage".mountPoint;
       metadata_dir = "/var/lib/garage";
       db_engine = "sqlite";
 

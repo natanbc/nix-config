@@ -24,7 +24,7 @@
 
       shares = {
         data = {
-          path = "/data";
+          path = config.fileSystems."/data".mountPoint;
           "read only" = "no";
           browseable = "yes";
           "guest ok" = "no";
