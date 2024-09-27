@@ -30,6 +30,13 @@
           "guest ok" = "no";
           comment = "NAS file share";
         };
+        scratch = {
+          path = config.fileSystems."/mnt/scratch".mountPoint;
+          "read only" = "no";
+          browseable = "yes";
+          "guest ok" = "no";
+          comment = "NAS scratch storage";
+        };
       };
     };
 
