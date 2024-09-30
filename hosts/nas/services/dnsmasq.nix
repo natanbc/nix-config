@@ -1,8 +1,14 @@
 {
   networking = {
     firewall.interfaces = {
-      enp1s0.allowedUDPPorts = [ 67 ];
-      enp1s0d1.allowedUDPPorts = [ 67 ];
+      enp1s0 = {
+        allowedTCPPorts = [ 139 445 5201 ];
+        allowedUDPPorts = [ 67 5201 ];
+      };
+      enp1s0d1 = {
+        allowedTCPPorts = [ 139 445 5201 ];
+        allowedUDPPorts = [ 67 5201 ];
+      };
     };
     interfaces = {
       enp1s0 = {
