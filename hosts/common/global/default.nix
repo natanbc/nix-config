@@ -26,6 +26,7 @@
 
   services.fstrim.enable = lib.mkDefault (!config.boot.isContainer);
   services.fwupd.enable = lib.mkDefault (!config.boot.isContainer);
+  services.irqbalance.enable = lib.mkDefault (!config.boot.isContainer);
 
   users.mutableUsers = lib.mkDefault false;
 }
