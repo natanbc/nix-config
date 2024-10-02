@@ -64,6 +64,11 @@
       fsType = "zfs";
     };
 
+  fileSystems."/var/lib/rancher/k3s/server/db" =
+    { device = "rpool/safe/k3s-db";
+      fsType = "zfs";
+    };
+
   fileSystems."/boot" =
     { device = "/dev/disk/by-uuid/D7F2-5F0E";
       fsType = "vfat";
