@@ -22,6 +22,8 @@
   hardware.enableRedistributableFirmware = true;
   hardware.wirelessRegulatoryDatabase = true;
 
+  networking.nftables.enable = lib.mkDefault true;
+
   services.fstrim.enable = lib.mkDefault (!config.boot.isContainer);
   services.fwupd.enable = lib.mkDefault (!config.boot.isContainer);
 
