@@ -4,6 +4,7 @@
     ./hardware-configuration.nix
 
     ../common/global
+    ../common/optional/cloudflare-dns01.nix
     ../common/optional/nginx.nix
     ../common/optional/tailscale.nix
     ../common/optional/zfs.nix
