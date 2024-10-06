@@ -18,9 +18,6 @@
               originServerName = "k3s.natanbc.net";
             };
           };
-          "argocd-webhook.natanbc.net" = {
-            service = "http://localhost:80";
-          };
           "docker-registry.natanbc.net" = {
             service = "http://localhost:80";
           };

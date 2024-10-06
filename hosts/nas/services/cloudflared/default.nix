@@ -12,6 +12,9 @@
       "9e9faf95-a6a0-47d2-b6db-7517078d29d6" = {
         credentialsFile = config.age.secrets.cloudflared-credentials.path;
         ingress = {
+          "argocd-webhook.natanbc.net" = {
+            service = "http://localhost:80";
+          };
           "s3.natanbc.net" = {
             service = "http://localhost:80";
           };
