@@ -90,11 +90,6 @@
       fsType = "zfs";
     };
 
-  fileSystems."/var/lib/longhorn" =
-    { device = "/dev/zvol/scratch/longhorn";
-      fsType = "ext4";
-    };
-
   swapDevices = [ ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
