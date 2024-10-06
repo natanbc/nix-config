@@ -8,7 +8,6 @@ in
   imports = [
     ./flannel.nix
     ./kubelet.nix
-    ./longhorn.nix
     ./nginx
     ./private-registry
   ];
