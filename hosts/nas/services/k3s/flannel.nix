@@ -26,4 +26,5 @@ in
     serviceCIDR
     "--kube-controller-manager-arg=node-cidr-mask-size=${toString subnetLen}"
   ];
+  services.tailscale.advertiseSubnets = [ clusterCIDR serviceCIDR ];
 }
