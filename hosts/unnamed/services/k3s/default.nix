@@ -27,6 +27,7 @@
       extraFlags = "--private-registry ${config.age.secrets.k3s-registry-config.path}";
       role = "server";
     };
+    tailscale.advertiseSubnets = [ "10.42.0.0/16" "10.43.0.0/16" ];
   };
 
   systemd.services.k3s.path = with pkgs; [ ipset ];
