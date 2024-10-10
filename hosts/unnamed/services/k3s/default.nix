@@ -23,7 +23,7 @@
   services = {
     k3s = {
       enable = true;
-      extraFlags = "--private-registry ${config.age.secrets.k3s-registry-config.path}";
+      extraFlags = "--private-registry ${config.age.secrets.k3s-registry-config.path} --kubelet-arg node-ip=0.0.0.0";
       role = "server";
     };
     tailscale.advertiseSubnets = [ "10.42.0.0/16" "10.43.0.0/16" ];
