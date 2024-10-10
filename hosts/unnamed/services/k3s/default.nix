@@ -17,9 +17,8 @@
 
   environment.systemPackages = with pkgs; [ k3s ];
 
-  networking.firewall.allowedTCPPorts = [
-    6443
-  ];
+  networking.firewall.allowedTCPPorts = [ 6443 ];
+  networking.firewall.interfaces.cni0.allowedTCPPorts = [ 10250 ];
 
   services = {
     k3s = {
