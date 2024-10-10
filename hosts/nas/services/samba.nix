@@ -13,6 +13,8 @@
 
     samba = {
       enable = true;
+      enableNmbd = false;
+      enableWinbindd = false;
       openFirewall = true;
 
       extraConfig = ''
