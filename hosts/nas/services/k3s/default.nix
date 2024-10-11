@@ -55,6 +55,7 @@ in
         configPath = configFile;
         flags = [
           "--agent-token-file" "${config.age.secrets.k3s-agent-token.path}"
+          "--disable" "coredns"
           "--disable" "local-storage"
           "--disable" "metrics-server"
           "--disable" "runtimes"
