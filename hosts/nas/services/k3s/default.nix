@@ -56,6 +56,8 @@ in
         flags = [
           "--agent-token-file" "${config.age.secrets.k3s-agent-token.path}"
           "--disable" "local-storage"
+          "--disable" "metrics-server"
+          "--disable" "runtimes"
           "--disable" "servicelb"
           "--disable" "traefik"
           "--flannel-iface" "tailscale0"
