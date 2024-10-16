@@ -1,3 +1,4 @@
+{ pkgs, ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -12,6 +13,14 @@
   ];
 
   networking = {
+    dhcpcd = {
+      denyInterfaces = [ "veth*" ];
+      runHook = ''
+        ip=${pkgs.iproute2}/bin/ip
+        if [[ "$interface" = "enp1s0f0" && "$if_up"   = "true" ]]; then $ip rule add    to 192.168.1.0/24 priority 2500 lookup main; fi
+        if [[ "$interface" = "enp1s0f0" && "$if_down" = "true" ]]; then $ip rule delete to 192.168.1.0/24 priority 2500 lookup main; fi
+      '';
+    };
     hostName = "unnamed";
     useDHCP = true;
     wireless.iwd.enable = true;
