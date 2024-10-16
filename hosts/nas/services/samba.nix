@@ -22,6 +22,11 @@
         map to guest = bad user
 
         logging = syslog@3
+
+        encrypt passwords = true
+        server signing = mandatory
+        server min protocol = SMB3
+        server smb encrypt = required
       '';
 
       shares = {
