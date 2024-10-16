@@ -14,7 +14,7 @@
 
   networking = {
     dhcpcd = {
-      denyInterfaces = [ "veth*" ];
+      denyInterfaces = [ "cni0" "flannel*" "veth*" ];
       runHook = ''
         ip=${pkgs.iproute2}/bin/ip
         if [[ "$interface" = "enp1s0f0" && "$if_up"   = "true" ]]; then $ip rule add    to 192.168.1.0/24 priority 2500 lookup main; fi
