@@ -9,12 +9,15 @@ let
     efibootmgr
     efivar
     ethtool
+    flashrom
     hdparm
     lm_sensors
+    nvme-cli
     pciutils
     sg3_utils
     smartmontools
     sysstat
+    usbtop
     usbutils
   ];
 in
@@ -31,8 +34,10 @@ in
   programs.bat.enable = true;
 
   home.packages = with pkgs; [
+    aria2
     curl
     dig
+    fastfetch
     ffmpeg
     file
     iperf
@@ -41,11 +46,11 @@ in
     mediainfo
     mtr
     ncdu_2
-    neofetch
     nload
     parallel
     pv
     ripgrep
+    rsync
     socat
     strace
     tcpdump
