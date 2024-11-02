@@ -1,0 +1,4 @@
+# nix build symlinks
+**/result
+# agenix source dir
+secrets
