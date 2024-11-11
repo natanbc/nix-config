@@ -58,5 +58,6 @@
   systemd.services.garage.serviceConfig.DynamicUser = false;
   systemd.services.garage.serviceConfig.User = config.users.users.garage.name;
   systemd.services.garage.serviceConfig.Group = config.users.groups.garage.name;
+  systemd.services.garage.serviceConfig.RequiresMountsFor = config.services.garage.settings.data_dir;
   systemd.services.garage.serviceConfig.RuntimeDirectory = "garage";
 }
