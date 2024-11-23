@@ -12,12 +12,6 @@
       "2a26f50f-d803-41e9-b3a4-a34c8b5104a2" = {
         credentialsFile = config.age.secrets.cloudflared-credentials.path;
         ingress = {
-          "k3s.natanbc.net" = {
-            service = "https://localhost:443";
-            originRequest = {
-              originServerName = "k3s.natanbc.net";
-            };
-          };
           "docker-registry.natanbc.net" = {
             service = "http://localhost:80";
           };
