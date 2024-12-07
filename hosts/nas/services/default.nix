@@ -2,6 +2,7 @@
   imports = [
     ./cloudflared
     ./dnsmasq.nix
+    ./docker-registry
     ./garage
     ./k3s
     ./samba.nix

@@ -15,6 +15,9 @@
           "argocd-webhook.natanbc.net" = {
             service = "http://localhost:80";
           };
+          "docker-registry.natanbc.net" = {
+            service = "http://localhost:80";
+          };
           "s3.natanbc.net" = {
             service = "http://localhost:80";
           };
