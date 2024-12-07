@@ -13,23 +13,23 @@
 
     samba = {
       enable = true;
-      enableNmbd = false;
-      enableWinbindd = false;
+      nmbd.enable = false;
+      winbindd.enable = false;
       openFirewall = true;
 
-      extraConfig = ''
-        guest account = nobody
-        map to guest = bad user
+      settings = {
+        global = {
+          "guest account" = "nobody";
+          "map to guest" = "bad user";
 
-        logging = syslog@3
+          "logging" = "syslog@3";
 
-        encrypt passwords = true
-        server signing = mandatory
-        server min protocol = SMB3
-        server smb encrypt = required
-      '';
+          "encrypt passwords" = true;
+          "server signing" = "mandatory";
+          "server min protocol" = "SMB3";
+          "server smb encrypt" = "required";
+        };
 
-      shares = {
         data = {
           path = config.fileSystems."/data".mountPoint;
           "read only" = "no";
