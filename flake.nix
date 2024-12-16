@@ -64,10 +64,10 @@
   in {
     packages = let
       overlays = lib.composeManyExtensions (builtins.attrValues outputs.overlays);
-    in forEachSystem (pkgs: overlays pkgs {});
+    in forEachSystem (pkgs: overlays {} pkgs);
 
     overlays = {
-      pkgs = final: prev: import ./pkgs { pkgs = final; };
+      pkgs = final: prev: import ./pkgs { pkgs = prev; };
     } // (
       if (builtins.readFile ./priv-overlays/available) == "yes" then
         import ./priv-overlays
