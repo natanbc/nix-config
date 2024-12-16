@@ -7,8 +7,11 @@
   runCommand,
   symlinkJoin,
   unstick,
+  jtag-quartus-ft232h,
   libfaketime,
   pkgsi686Linux,
+  quartus-prime-standard-unwrapped,
+  sv_second_pcie_hip,
   withQuesta ? true,
   supportedDevices ? [
     "Arria II"
@@ -23,9 +26,6 @@
     "Stratix IV"
     "Stratix V"
   ],
-  quartus-prime-standard-unwrapped ? callPackage ../quartus-prime-standard-unwrapped { inherit unstick supportedDevices withQuesta; },
-  sv_second_pcie_hip ? callPackage ./sv_second_pcie_hip.nix {},
-  jtag-quartus-ft232h ? callPackage ./jtag-quartus-ft232h.nix {},
   extraProfile ? "",
 }:
 

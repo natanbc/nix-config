@@ -19,7 +19,7 @@ stdenv.mkDerivation {
     hash = "sha256-lX24TvBjcgGdxdYWDf91piC/Nx1O/ZiL4Jm29KnAVnA=";
   };
 
-  patches = [ ./jtag-quartus-ft232h-pkg-config.patch ];
+  patches = [ ./pkg-config.patch ];
 
   nativeBuildInputs = [ cmake gnumake jimtcl pkg-config ];
 
