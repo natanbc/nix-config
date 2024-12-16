@@ -73,7 +73,7 @@
       specialArgs = { inherit inputs outputs; };
     };
   in {
-    packages = forEachSystem (pkgs: overlaysMerged {} pkgs);
+    packages = forEachSystem (pkgs: pkgs.extend overlaysMerged);
 
     overlays = (builtins.listToAttrs overlaysOrdered) // { default = overlaysMerged; };
 
