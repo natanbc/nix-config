@@ -47,6 +47,7 @@ in
     mtr
     ncdu_2
     nload
+    openssl # needed for transcrypt
     parallel
     pv
     ripgrep
@@ -55,6 +56,7 @@ in
     strace
     tcpdump
     tmux
+    transcrypt
     tree
     unar
     wget
