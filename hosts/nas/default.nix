@@ -19,6 +19,7 @@
   
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
     "quartus-prime-standard-unwrapped"
+    "quartus-unwrapped"
   ];
 
   boot.kernelParams = [

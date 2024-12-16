@@ -42,6 +42,17 @@
     });
     forEachSystem = f: lib.genAttrs systems (system: f pkgsFor.${system});
 
+    overlaysOrdered = [
+      { name = "pkgs"; value = import ./pkgs; }
+    ] ++ (
+      if (builtins.readFile ./priv-overlays/available) == "yes" then
+        import ./priv-overlays
+      else
+        []
+    );
+    overlaysValues = builtins.map (o: o.value) overlaysOrdered;
+    overlaysMerged = lib.composeManyExtensions overlaysValues;
+
     box = name: lib.nixosSystem {
       modules = [
         ({
@@ -52,7 +63,7 @@
 
           environment.etc."current-config".source = ./.;
 
-          nixpkgs.overlays = builtins.attrValues outputs.overlays;
+          nixpkgs.overlays = overlaysValues;
         })
         agenix.nixosModules.default
         lanzaboote.nixosModules.lanzaboote
@@ -62,18 +73,9 @@
       specialArgs = { inherit inputs outputs; };
     };
   in {
-    packages = let
-      overlays = lib.composeManyExtensions (builtins.attrValues outputs.overlays);
-    in forEachSystem (pkgs: overlays {} pkgs);
+    packages = forEachSystem (pkgs: overlaysMerged {} pkgs);
 
-    overlays = {
-      pkgs = final: prev: import ./pkgs { pkgs = prev; };
-    } // (
-      if (builtins.readFile ./priv-overlays/available) == "yes" then
-        import ./priv-overlays
-      else
-        {}
-    );
+    overlays = (builtins.listToAttrs overlaysOrdered) // { default = overlaysMerged; };
 
     nixosConfigurations = {
       live-iso = box "live-iso";
