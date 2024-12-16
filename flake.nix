@@ -62,11 +62,18 @@
       specialArgs = { inherit inputs outputs; };
     };
   in {
-    packages = forEachSystem (pkgs: import ./pkgs { inherit pkgs; });
+    packages = let
+      overlays = lib.composeManyExtensions (builtins.attrValues outputs.overlays);
+    in forEachSystem (pkgs: overlays pkgs {});
 
     overlays = {
       pkgs = final: prev: import ./pkgs { pkgs = final; };
-    };
+    } // (
+      if (builtins.readFile ./priv-overlays/available) == "yes" then
+        import ./priv-overlays
+      else
+        {}
+    );
 
     nixosConfigurations = {
       live-iso = box "live-iso";
