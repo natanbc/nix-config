@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -16,12 +16,20 @@
     ./wol.nix
 
   ];
+  
+  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+    "quartus-prime-standard-unwrapped"
+  ];
 
   boot.kernelParams = [
     # 96GiB
     "zfs.zfs_arc_max=103079215104"
   ];
   boot.tmp.tmpfsSize = "112G";
+
+  systemd.tmpfiles.rules = [
+    "L+ /opt/quartus-prime-standard - - - - ${pkgs.quartus-prime-standard}"
+  ];
 
   networking = {
     dhcpcd = {
