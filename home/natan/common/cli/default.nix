@@ -3,6 +3,9 @@ let
   unstable = import inputs.nixpkgs-unstable {
     system = pkgs.system;
   };
+  unstable-small = import inputs.nixpkgs-unstable-small {
+    system = pkgs.system;
+  };
 
   hwPackages = with pkgs; [
     dmidecode
@@ -60,7 +63,7 @@ in
     tree
     unar
     wget
-    unstable.yt-dlp
+    unstable-small.yt-dlp
     zip
   ] ++ (if !nixosConfig.boot.isContainer then hwPackages else []);
 }
