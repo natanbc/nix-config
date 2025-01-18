@@ -26,6 +26,7 @@
   boot.initrd.luks.devices = {
     "luks-rpool-6a28a049-626a-4122-a68e-a6c9a94cb569" = {
       allowDiscards = true;
+      crypttabExtraOpts = [ "tpm2-device=auto" "tpm2-measure-pcr=yes" ];
       device = "/dev/disk/by-uuid/6a28a049-626a-4122-a68e-a6c9a94cb569";
     };
   };
