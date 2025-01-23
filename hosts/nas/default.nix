@@ -25,6 +25,10 @@
   boot.kernelParams = [
     # 96GiB
     "zfs.zfs_arc_max=103079215104"
+    "mlx4_core.num_vfs=4,4,0"
+    "mlx4_core.probe_vf=4,4,0"
+    "mlx4_core.port_type_array=2,2"
+    "pci=realloc=on"
   ];
   boot.tmp.tmpfsSize = "112G";
 
