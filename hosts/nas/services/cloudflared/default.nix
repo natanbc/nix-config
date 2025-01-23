@@ -9,7 +9,7 @@
   services.cloudflared = {
     enable = true;
     tunnels = {
-      "9e9faf95-a6a0-47d2-b6db-7517078d29d6" = {
+      "a55b94ed-5be5-4616-b916-720ce605da46" = {
         credentialsFile = config.age.secrets.cloudflared-credentials.path;
         ingress = {
           "argocd-webhook.natanbc.net" = {
