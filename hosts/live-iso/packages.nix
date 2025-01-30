@@ -1,11 +1,14 @@
 { pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
+    ddrescue
     dmidecode
     dnsmasq
     efibootmgr
     efivar
     ethtool
+    fastfetch
+    flashrom
     file
     gparted
     hdparm
@@ -16,19 +19,21 @@
     lm_sensors
     mstflint-connectx3
     mtr
-    neofetch
     nload
     ntttcp
+    nvme-cli
     opensm
     pciutils
     perftest
     pv
     rdma-core
+    sg3_utils
     smartmontools
     sysstat
     tcpdump
     tmux
     tree
+    usbtop
     usbutils
     vim
   ];
