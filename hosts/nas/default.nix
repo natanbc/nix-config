@@ -29,6 +29,7 @@
     "mlx4_core.probe_vf=4,4,0"
     "mlx4_core.port_type_array=2,2"
     "pci=realloc=on"
+    "intel_iommu=on"
   ];
   boot.tmp.tmpfsSize = "112G";
 
