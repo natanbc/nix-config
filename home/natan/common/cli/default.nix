@@ -35,6 +35,7 @@ in
   ];
 
   programs.bat.enable = true;
+  programs.jujutsu.enable = true;
 
   home.packages = with pkgs; [
     aria2
