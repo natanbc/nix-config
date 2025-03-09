@@ -3,6 +3,7 @@
   age.secrets.quartus-license.file = ./quartus-license.age;
   age.secrets.macaddr.file = ./macaddr.age;
 
+  environment.systemPackages = [ pkgs.quartus-prime-standard ];
   environment.variables.LM_LICENSE_FILE = config.scalpel.trafos."quartus-license.dat".destination;
 
   scalpel.trafos."quartus-license.dat" = {
