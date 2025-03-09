@@ -12,10 +12,10 @@
 
     ./connectx3-sriov.nix
     ./lanzaboote.nix
+    ./quartus
     ./remote-disk-unlock.nix
     ./services
     ./wol.nix
-
   ];
   
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
@@ -28,10 +28,6 @@
     "zfs.zfs_arc_max=103079215104"
   ];
   boot.tmp.tmpfsSize = "112G";
-
-  systemd.tmpfiles.rules = [
-    "L+ /opt/quartus-prime-standard - - - - ${pkgs.quartus-prime-standard}"
-  ];
 
   networking = {
     dhcpcd = {
