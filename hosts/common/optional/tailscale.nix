@@ -11,7 +11,7 @@ in
       description = ''
         Whether to advertise the machine as an exit node.
       '';
-      default = [];
+      default = false;
       type = lib.types.bool;
     };
 
