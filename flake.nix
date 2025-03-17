@@ -83,6 +83,7 @@
       live-iso-graphical = box "live-iso-graphical";
       nas = box "nas";
       unnamed = box "unnamed";
+      xenia = box "xenia";
     };
   };
 }
