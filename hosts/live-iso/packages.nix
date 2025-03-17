@@ -7,6 +7,7 @@
     efibootmgr
     efivar
     ethtool
+    f3
     fastfetch
     flashrom
     file
