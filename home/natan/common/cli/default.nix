@@ -1,10 +1,12 @@
-{ nixosConfig, inputs, pkgs, ... }:
+{ nixosConfig, inputs, outputs, pkgs, ... }:
 let
   unstable = import inputs.nixpkgs-unstable {
     system = pkgs.system;
+    overlays = builtins.attrValues outputs.overlays;
   };
   unstable-small = import inputs.nixpkgs-unstable-small {
     system = pkgs.system;
+    overlays = builtins.attrValues outputs.overlays;
   };
 
   hwPackages = with pkgs; [

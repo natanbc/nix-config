@@ -15,5 +15,6 @@ final: prev:
   sv_second_pcie_hip               = final.callPackage ./sv_second_pcie_hip {};
   tunrotate                        = final.callPackage ./tunrotate {};
   ytarchive                        = final.callPackage ./ytarchive {};
+  yt-dlp                           = final.callPackage ./yt-dlp { yt-dlp = prev.yt-dlp; };
 }
 
