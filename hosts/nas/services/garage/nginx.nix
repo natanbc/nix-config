@@ -16,5 +16,10 @@
       enableACME = true;
       locations."/".proxyPass = "http://unix:/run/garage/s3-web.socket";
     };
+    "s.natanbc.net" = {
+      addSSL = true;
+      enableACME = true;
+      locations."/".proxyPass = "http://unix:/run/garage/s3-web.socket";
+    };
   };
 }
