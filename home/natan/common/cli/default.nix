@@ -39,6 +39,10 @@ in
   programs.bat.enable = true;
   programs.jujutsu.enable = true;
 
+  home.shellAliases = {
+    "cp" = "cp -a";
+  };
+
   home.packages = with pkgs; [
     aria2
     curl
