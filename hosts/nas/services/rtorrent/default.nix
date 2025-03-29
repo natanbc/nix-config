@@ -27,4 +27,6 @@
     nginx.enable = true;
     plugins = [ "httprpc" "create" "data" "diskspace" "edit" "erasedata" "theme" "trafic" ];
   };
+
+  systemd.services.rtorrent.unitConfig.RequiresMountsFor = config.services.rtorrent.downloadDir;
 }
