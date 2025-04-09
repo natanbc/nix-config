@@ -4,7 +4,7 @@
     ./dnsmasq.nix
     ./docker-registry
     ./garage
-    ./k3s
+    #./k3s
     ./rtorrent
     ./samba.nix
     ./tailscale.nix

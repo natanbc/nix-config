@@ -50,7 +50,7 @@ in
 
     services = {
       k3s = {
-        enable = false;
+        enable = true;
 
         configPath = configFile;
         flags = [
