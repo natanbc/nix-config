@@ -7,6 +7,8 @@
     ../common/optional/tailscale.nix
     ../common/optional/zfs.nix
     ../common/users/natan
+
+    ./udev.nix
   ];
 
   networking = {
