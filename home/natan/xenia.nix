@@ -7,5 +7,8 @@ in
 {
   imports = [ ./common ];
 
-  home.packages = [ unstable.openfpgaloader ];
+  home.packages = with pkgs; [
+    hantek6022api
+    unstable.openfpgaloader
+  ];
 }

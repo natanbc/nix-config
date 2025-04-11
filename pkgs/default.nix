@@ -1,5 +1,6 @@
 final: prev:
 {
+  hantek6022api                    = final.callPackage ./hantek6022api {};
   hoshinova                        = final.callPackage ./hoshinova {};
   jtag-quartus-ft232h              = final.callPackage ./jtag-quartus-ft232h {};
   mstflint-connectx3               = final.callPackage ./mstflint-connectx3 {};
