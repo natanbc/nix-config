@@ -26,5 +26,10 @@ python3Packages.buildPythonPackage rec {
   preBuild = ''
     make -C fx2upload
   '';
+
+  postInstall = ''
+    mkdir -p $out/etc/udev/rules.d
+    cp udev/60-hantek6022api.rules $out/etc/udev/rules.d/
+  '';
 }
 
