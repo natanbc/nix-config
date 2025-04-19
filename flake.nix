@@ -60,7 +60,7 @@
           system.configurationRevision =
             if self ? rev
             then self.rev
-            else "DIRTY";
+            else self.dirtyRev;
 
           environment.etc."current-config".source = ./.;
 
