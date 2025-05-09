@@ -40,6 +40,7 @@ in
   programs.jujutsu.enable = true;
 
   home.shellAliases = {
+    "cat" = "bat";
     "cp" = "cp -a";
   };
 

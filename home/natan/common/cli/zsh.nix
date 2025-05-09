@@ -14,9 +14,6 @@
       TIMER_FORMAT = "# %d";
       TIMER_THRESHOLD = "3";
     };
-    shellAliases = {
-      cat = "bat";
-    };
 
     oh-my-zsh = {
       enable = true;
