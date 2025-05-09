@@ -30,6 +30,7 @@ in
   imports = [
     ./direnv.nix
     ./git.nix
+    ./helix.nix
     ./htop.nix
     ./ssh.nix
     ./vim.nix
