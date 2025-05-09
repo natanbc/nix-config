@@ -21,9 +21,16 @@
        "ins"       = "insert_mode";
 
         ";" = {
-          "q" = ":q";
           "w" = ":w";
-          "x" = ":x";
+          "q" = {
+            ret = ":q";
+            "!" = {
+              ret = ":q!";
+            };
+          };
+          "x" = {
+            ret = ":x";
+          };
         };
         "d" = {
           "d"    = ["extend_to_line_bounds" "yank_main_selection_to_clipboard" "delete_selection"];
