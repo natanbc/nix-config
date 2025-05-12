@@ -16,6 +16,7 @@
 
   programs = {
     bat.enable = true;
+    dircolors.enable = true;
     git.enable = true;
     home-manager.enable = true;
     jujutsu.enable = true;
