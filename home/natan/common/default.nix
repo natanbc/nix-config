@@ -34,13 +34,17 @@
     };
 
     packages = let
-      unstable = import inputs.nixpkgs-unstable {
-        system = pkgs.system;
-        overlays = builtins.attrValues outputs.overlays;
-      };
       unstable-small = import inputs.nixpkgs-unstable-small {
         system = pkgs.system;
         overlays = builtins.attrValues outputs.overlays;
+      };
+
+      yt-dlp-unstable-small = unstable-small.yt-dlp.override {
+        python3Packages = pkgs.python3Packages;
+        fetchPypi = pkgs.fetchPypi;
+        ffmpeg-headless = pkgs.ffmpeg-headless;
+        rtmpdump = pkgs.rtmpdump;
+        atomicparsley = pkgs.atomicparsley;
       };
 
       hwPackages = with pkgs; [
@@ -86,7 +90,7 @@
       tree
       unar
       wget
-      unstable-small.yt-dlp
+      yt-dlp-unstable-small
       zip
     ] ++ (if !nixosConfig.boot.isContainer then hwPackages else []);
   };
