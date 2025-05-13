@@ -68,7 +68,7 @@
       curl
       dig
       fastfetch
-      ffmpeg
+      ffmpeg-headless
       file
       iperf
       jq
