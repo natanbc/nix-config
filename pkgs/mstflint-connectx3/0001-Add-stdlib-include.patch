@@ -1,0 +1,24 @@
+From 96e6c8d80bc5f99dc173d1575d3201bb62f0368e Mon Sep 17 00:00:00 2001
+From: natanbc <natanbc@users.noreply.github.com>
+Date: Tue, 3 Jun 2025 04:31:12 +0000
+Subject: [PATCH] Add stdlib include
+
+---
+ mflash/mflash_dev_capability.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/mflash/mflash_dev_capability.c b/mflash/mflash_dev_capability.c
+index ff3c8bc..52e3e0e 100644
+--- a/mflash/mflash_dev_capability.c
++++ b/mflash/mflash_dev_capability.c
+@@ -40,6 +40,7 @@
+  */
+ 
+ #include "mflash_dev_capability.h"
++#include <stdlib.h>
+ 
+ // When (*status != MFE_OK) return value is undefined
+ int is_four_byte_address_needed(mflash* mfl, MfError* status)
+-- 
+2.49.0
+

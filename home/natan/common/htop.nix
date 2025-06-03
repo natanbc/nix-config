@@ -15,8 +15,4 @@
       show_cpu_temperature = 1;
     });
   };
-
-  # https://github.com/nix-community/home-manager/issues/4947
-  # https://github.com/nix-community/home-manager/pull/5553
-  xdg.configFile."htop/htoprc".force = true;
 }

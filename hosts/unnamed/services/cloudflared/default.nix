@@ -2,8 +2,6 @@
 {
   age.secrets.cloudflared-credentials = {
     file = ./credentials.age;
-    group = config.services.cloudflared.group;
-    owner = config.services.cloudflared.user;
   };
 
   services.cloudflared = {

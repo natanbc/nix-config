@@ -8,7 +8,7 @@
       save = 100000;
       size = 100000;
     };
-    initExtra = "autoload zmv";
+    initContent = "autoload zmv";
     sessionVariables = {
       LESS = "-R -Q";
       TIMER_FORMAT = "# %d";
