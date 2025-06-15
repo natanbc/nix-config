@@ -5,6 +5,7 @@
     ./docker-registry
     ./garage
     #./k3s
+    ./kanidm
     ./rtorrent
     ./samba.nix
     ./tailscale.nix
