@@ -6,6 +6,7 @@
     ./garage
     #./k3s
     ./kanidm
+    ./oauth2-proxy
     ./rtorrent
     ./samba.nix
     ./tailscale.nix
