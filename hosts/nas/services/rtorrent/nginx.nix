@@ -1,9 +1,8 @@
 { config, ... }: {
-  age.secrets.rtorrent-auth = {
-    file = ./auth.age;
-    owner = "nginx";
-    group = "nginx";
-  };
+  assertions = [{
+    assertion = config.services.oauth2-proxy.enable;
+    message = "rtorrent authentication is handled by oauth2-proxy";
+  }];
 
   services.nginx.virtualHosts = {
     "rtorrent.natanbc.net" = {
@@ -11,7 +10,10 @@
       enableACME = true;
       acmeRoot = null;
 
-      basicAuthFile = config.age.secrets.rtorrent-auth.path;
     };
+  };
+
+  services.oauth2-proxy.nginx.virtualHosts."rtorrent.natanbc.net" = {
+    allowed_groups = ["rtorrent_users@idp.x86-64.mov"];
   };
 }
