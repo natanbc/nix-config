@@ -13,7 +13,6 @@ final: prev:
     withQuesta = false;
     supportedDevices = [ "Stratix V" ];
   };
-  rauthy                           = final.callPackage ./rauthy {};
   sv_second_pcie_hip               = final.callPackage ./sv_second_pcie_hip {};
   tunrotate                        = final.callPackage ./tunrotate {};
   ytarchive                        = final.callPackage ./ytarchive {};
