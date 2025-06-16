@@ -22,11 +22,6 @@
     fsType = "zfs";
   };
 
-  fileSystems."/var/lib/longhorn" = {
-    device = "/dev/zvol/rpool/local/longhorn-data";
-    fsType = "ext4";
-  };
-
   fileSystems."/var/log" = {
     device = "rpool/local/log";
     fsType = "zfs";
