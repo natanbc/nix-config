@@ -30,4 +30,6 @@ in
     };
     listenAddress = "127.0.0.1";
   };
+
+  systemd.services.docker-registry.serviceConfig.Environment = "OTEL_TRACES_EXPORTER=none";
 }
