@@ -52,12 +52,9 @@
       JWT_SIGNING_ALGORITHM = "HS256";
     };
     settings.oauth2_client = {
-      OPENID_CONNECT_SCOPES = "openid,email,profile,forgejo_users";
-    };
-    settings.openid = {
-      ENABLE_OPENID_SIGNIN = true;
-      ENABLE_OPENID_SIGNUP = true;
-      WHITELISTED_URIS = "https://idp.x86-64.mov";
+      ENABLE_AUTO_REGISTRATION = true;
+      USERNAME = "nickname";
+      UPDATE_AVATAR = true;
     };
     settings.repository = {
       DEFAULT_PRIVATE = "private";
@@ -84,6 +81,7 @@
     settings.service = {
       AUTO_WATCH_NEW_REPOS = false;
       DISABLE_REGISTRATION = true;
+      ALLOW_ONLY_EXTERNAL_REGISTRATION = true;
     };
     settings."service.explore" = {
       REQUIRE_SIGNIN_VIEW = true;
