@@ -17,6 +17,10 @@
     };
   };
 
+  networking.firewall.allowedTCPPorts = [
+    config.services.forgejo.settings.server.SSH_PORT
+  ];
+
   services.forgejo = {
     enable = true;
 
@@ -72,11 +76,14 @@
       TEMP_PATH = "/tmp/forgejo-repository-uploads";
     };
     settings.server = {
+      DISABLE_SSH = false;
       DOMAIN = "git.natanbc.net";
-      DISABLE_SSH = true;
       HTTP_ADDR = "/run/forgejo/forgejo.sock";
       PROTOCOL = "http+unix";
       ROOT_URL = "https://git.natanbc.net";
+      SSH_PORT = 2222;
+      START_SSH_SERVER = true;
+      SSH_SERVER_USE_PROXY_PROTOCOL = true;
     };
     settings.service = {
       AUTO_WATCH_NEW_REPOS = false;
