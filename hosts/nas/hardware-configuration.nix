@@ -55,6 +55,11 @@
       fsType = "zfs";
     };
 
+  fileSystems."/var/lib/forgejo" =
+    { device = "rpool/safe/forgejo";
+      fsType = "zfs";
+    };
+
   fileSystems."/var/lib/kubelet" =
     { device = "rpool/local/kubelet";
       fsType = "zfs";

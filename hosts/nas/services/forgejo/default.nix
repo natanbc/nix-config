@@ -1,0 +1,104 @@
+{ config, lib, ... }: {
+  imports = [
+    ./anubis.nix
+    ./nginx.nix
+  ];
+
+  age.secrets = {
+    forgejo-jwt-secret = {
+      file = ./jwt-secret.age;
+      owner = config.services.forgejo.user;
+      group = config.services.forgejo.group;
+    };
+    forgejo-secret-key = {
+      file = ./secret-key.age;
+      owner = config.services.forgejo.user;
+      group = config.services.forgejo.group;
+    };
+  };
+
+  services.forgejo = {
+    enable = true;
+
+    database.type = "sqlite3";
+    stateDir = config.fileSystems."/var/lib/forgejo".mountPoint;
+
+    secrets = {
+      oauth2 = {
+        JWT_SECRET = lib.mkForce config.age.secrets.forgejo-jwt-secret.path;
+      };
+      security = {
+        SECRET_KEY = lib.mkForce config.age.secrets.forgejo-secret-key.path;
+      };
+    };
+
+    settings.DEFAULT = {
+      APP_NAME = "git.natanbc.net";
+    };
+    settings.actions = {
+      # No ACE for now
+      ENABLED = false;
+    };
+    settings.database = {
+      SQLITE_JOURNAL_MODE = "WAL";
+    };
+    settings.federation = {
+      ENABLED = false;
+    };
+    settings.log = {
+      ROOT_PATH = config.fileSystems."/var/log".mountPoint + "/forgejo";
+    };
+    settings.oauth2 = {
+      JWT_SIGNING_ALGORITHM = "HS256";
+    };
+    settings.oauth2_client = {
+      OPENID_CONNECT_SCOPES = "openid,email,profile,forgejo_users";
+    };
+    settings.openid = {
+      ENABLE_OPENID_SIGNIN = true;
+      ENABLE_OPENID_SIGNUP = true;
+      WHITELISTED_URIS = "https://idp.x86-64.mov";
+    };
+    settings.repository = {
+      DEFAULT_PRIVATE = "private";
+      ENABLE_PUSH_CREATE_USER = true;
+      ENABLE_PUSH_CREATE_ORG = true;
+      DEFAULT_REPO_UNITS = "repo.code,repo.releases";
+    };
+    settings."repository.local" = {
+      LOCAL_COPY_PATH = "/tmp/forgejo-repository-copy";
+    };
+    settings."repository.signing" = {
+      DEFAULT_TRUST_MODEL = "committer";
+    };
+    settings."repository.upload" = {
+      TEMP_PATH = "/tmp/forgejo-repository-uploads";
+    };
+    settings.server = {
+      DOMAIN = "git.natanbc.net";
+      DISABLE_SSH = true;
+      HTTP_ADDR = "/run/forgejo/forgejo.sock";
+      PROTOCOL = "http+unix";
+      ROOT_URL = "https://git.natanbc.net";
+    };
+    settings.service = {
+      AUTO_WATCH_NEW_REPOS = false;
+      DISABLE_REGISTRATION = true;
+    };
+    settings."service.explore" = {
+      REQUIRE_SIGNIN_VIEW = true;
+    };
+    settings.session = {
+      COOKIE_SECURE = true;
+      DOMAIN = "git.natanbc.net";
+    };
+    settings."ssh.minimum_key_sizes" = {
+      # Use modern crypto. ECDSA allowed only because some secure enclaves can't do Ed25519
+      RSA = -1;
+    };
+    settings."ui.meta" = {
+      AUTHOR = "git.natanbc.net";
+      DESCRIPTION = "natan's git forge";
+    };
+  };
+}

@@ -3,6 +3,7 @@
     ./cloudflared
     ./dnsmasq.nix
     ./docker-registry
+    ./forgejo
     ./garage
     #./k3s
     ./kanidm
