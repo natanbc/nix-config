@@ -2,6 +2,7 @@
 {
   imports = [
     inputs.home-manager.nixosModules.home-manager
+    ./anubis.nix
     ./nix.nix
     ./ssh.nix
     ./zsh.nix
