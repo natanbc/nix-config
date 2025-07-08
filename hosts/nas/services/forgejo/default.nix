@@ -76,14 +76,15 @@
       TEMP_PATH = "/tmp/forgejo-repository-uploads";
     };
     settings.server = {
+      BUILTIN_SSH_SERVER_USER = "git";
       DISABLE_SSH = false;
       DOMAIN = "git.natanbc.net";
       HTTP_ADDR = "/run/forgejo/forgejo.sock";
       PROTOCOL = "http+unix";
       ROOT_URL = "https://git.natanbc.net";
       SSH_PORT = 2222;
-      START_SSH_SERVER = true;
       SSH_SERVER_USE_PROXY_PROTOCOL = true;
+      START_SSH_SERVER = true;
     };
     settings.service = {
       AUTO_WATCH_NEW_REPOS = false;
