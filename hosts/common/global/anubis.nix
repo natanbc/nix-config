@@ -1,8 +1,6 @@
 {
   services.anubis.defaultOptions = {
     settings = {
-      DIFFICULTY = 5;
-
       OG_PASSTHROUGH = true;
       OG_EXPIRY_TIME = "1h";
       # Default to one anubis instance per domain
